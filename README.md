@@ -2,10 +2,7 @@
 
 ## NOT USABLE, UNDER HEAVY DEVELOPMENT
 
-
 Goal of this repository is to build a tool to easily generate document/paragraph/sentence vectors for further machine learning models.
-
-
 
 We do such transformation by the following two ways. 
 
