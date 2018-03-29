@@ -1,33 +1,49 @@
 # Text2Vec 
 ### Easily generate document/paragraph/sentence vectors and calculate similarity. 
 
-## NOT USABLE, UNDER HEAVY DEVELOPMENT
 
 Goal of this repository is to build a tool to easily generate document/paragraph/sentence vectors for similarity calculation and as input for further machine learning models.
 
+## Usage
+
 We do such transformation by the following ways. 
+doc_list is a list of documents/paragraphs/sentences.
 
-1. Use Bag of Words (TODO)
+1. Use TFIDF
+```
+import text2vec
+docs_tfidf = text2vec.get_tfidf(doc_list)
+```
 
-2. Use Average of Word Embeddings (TODO)
+2. Use Average of Word Embeddings
+```
+import text2vec
+docs_avgw2v = text2vec.avg_wv(doc_list)
+```
 
-3. Use Weighted Word Embeddings wrt TFIDF (DONE)
+3. Use Weighted Word Embeddings wrt TFIDF
+```
+import text2vec
+docs_emb = text2vec.tfidf_weighted_wv(doc_list)
+```
 
 4. Use Gensim Doc2Vec (TODO)
 
 Either way we can train again with our own data, or directly use the pre-trained doc2vec/word2vec models.
 
-## Training (Optional):
+
+
+### Training (Optional) (TODO)
 
 * Initialize: Pre-trained Word Embeddings (Optional)
 * Input: Large Corpus
 * Output: Doc2Vec/Word2Vec models
 
-## Inference:
+### Inference:
 
 * Initialize: Pre-trained Doc2Vec/Word2Vec model
-* input: Single Document
-* output: Vector of dimention N
+* input: List of Documents
+* output: List of Vectors of dimention N
 
 
 
