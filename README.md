@@ -11,7 +11,7 @@ We do such transformation by the following ways.
 
 2. Use Average of Word Embeddings (TODO)
 
-3. Use Weighted Word Embeddings wrt TFIDF (TODO)
+3. Use Weighted Word Embeddings wrt TFIDF (DONE)
 
 4. Use Gensim Doc2Vec (TODO)
 
