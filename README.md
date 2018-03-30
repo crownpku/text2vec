@@ -4,62 +4,89 @@
 
 Goal of this repository is to build a tool to easily generate document/paragraph/sentence vectors for similarity calculation and as input for further machine learning models.
 
-## Usage
-
-We do such transformation by the following ways. 
-
-doc_list is a list of documents/paragraphs/sentences.
+## Usage of Text to Vector (text2vec)
 
 * Initialize: Pre-trained Doc2Vec/Word2Vec model
-* input: List of Documents
+```
+import text2vec
+```
+
+* input: List of Documents, doc_list is a list of documents/paragraphs/sentences.
+```
+t2v = text2vec.text2vec(doc_list)
+```
+
 * output: List of Vectors of dimention N
+
+We do such transformation by the following ways. 
 
 
 #### Use TFIDF
 ```
-import text2vec
-docs_tfidf = text2vec.get_tfidf(doc_list)
+docs_tfidf = t2v.get_tfidf()
 ```
 
 #### Use Latent Semantic Indexing(LSI)
 ```
-import text2vec
-docs_lsi = text2vec.get_lsi(doc_list)
+docs_lsi = t2v.get_lsi()
 ```
 
 #### Use Random Projections(RP)
 ```
-import text2vec
-docs_rp = text2vec.get_rp(doc_list)
+docs_rp = t2v.get_rp()
 ```
 
 #### Use Latent Dirichlet Allocation(LDA)
 ```
-import text2vec
-docs_lda = text2vec.get_lda(doc_list)
+docs_lda = t2v.get_lda()
 ```
 
 #### Use Hierarchical Dirichlet Process(HDP)
 ```
-import text2vec
-docs_hdp = text2vec.get_hdp(doc_list)
+docs_hdp = t2v.get_hdp()
 ```
 
 #### Use Average of Word Embeddings
 ```
-import text2vec
-docs_avgw2v = text2vec.avg_wv(doc_list)
+docs_avgw2v = t2v.avg_wv()
 ```
 
 #### Use Weighted Word Embeddings wrt. TFIDF
 ```
-import text2vec
-docs_emb = text2vec.tfidf_weighted_wv(doc_list)
+docs_emb = t2v.tfidf_weighted_wv()
 ```
 
-### Similarity Calculation
-Coming up soon
+## Usage of Similarity Calculation (simical)
 
+For example, we want to calculate the similarity between the first two sentences in the docs_emb we just computed.
+```
+sc = text2vec.simical(docs_emb[0], docs_emb[1])
+```
+
+#### Use Cosine
+```
+simi_cos = sc.Cosine()
+```
+
+#### Use Euclidean
+```
+simi_euc = sc.Euclidean()
+```
+
+#### Use Triangle's Area Similarity (TS)
+```
+simi_ts = sc.Triangle()
+```
+
+#### Use Sector's Area Similairity (SS)
+```
+simi_ss = sc.Sector()
+```
+
+#### Use TS-SS
+```
+simi_ts_ss = sc.TS_SS()
+```
 
 ## Reference
 

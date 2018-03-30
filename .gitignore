@@ -104,3 +104,6 @@ ENV/
 #Models
 */model/
 */data/
+
+#Jupyter notebooks
+*.ipynb
