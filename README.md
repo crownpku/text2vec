@@ -24,39 +24,26 @@ t2v = text2vec.text2vec(doc_list)
 
 We do such transformation by the following ways. 
 
-
-#### Use TFIDF
 ```
+# Use TFIDF
 docs_tfidf = t2v.get_tfidf()
-```
 
-#### Use Latent Semantic Indexing(LSI)
-```
+# Use Latent Semantic Indexing(LSI)
 docs_lsi = t2v.get_lsi()
-```
 
-#### Use Random Projections(RP)
-```
+# Use Random Projections(RP)
 docs_rp = t2v.get_rp()
-```
 
-#### Use Latent Dirichlet Allocation(LDA)
-```
+# Use Latent Dirichlet Allocation(LDA)
 docs_lda = t2v.get_lda()
-```
 
-#### Use Hierarchical Dirichlet Process(HDP)
-```
+# Use Hierarchical Dirichlet Process(HDP)
 docs_hdp = t2v.get_hdp()
-```
 
-#### Use Average of Word Embeddings
-```
+# Use Average of Word Embeddings
 docs_avgw2v = t2v.avg_wv()
-```
 
-#### Use Weighted Word Embeddings wrt. TFIDF
-```
+# Use Weighted Word Embeddings wrt. TFIDF
 docs_emb = t2v.tfidf_weighted_wv()
 ```
 
@@ -67,34 +54,24 @@ For example, we want to calculate the similarity/distance between the first two 
 Note that cosine similarity is between 0-1 (1 is most similar while 0 is least similar).
 For the other similarity measurements the results are actually **distance** (the larget the less similar). It's better to calculate distance for all possible pairs and then rank.
 
-* Initialize
 ```
+# Initialize
 import text2vec
 sc = text2vec.simical(docs_emb[0], docs_emb[1])
-```
 
-#### Use Cosine
-```
+# Use Cosine
 simi_cos = sc.Cosine()
-```
 
-#### Use Euclidean
-```
+# Use Euclidean
 simi_euc = sc.Euclidean()
-```
 
-#### Use Triangle's Area Similarity (TS)
-```
+# Use Triangle's Area Similarity (TS)
 simi_ts = sc.Triangle()
-```
 
-#### Use Sector's Area Similairity (SS)
-```
+# Use Sector's Area Similairity (SS)
 simi_ss = sc.Sector()
-```
 
-#### Use TS-SS
-```
+# Use TS-SS
 simi_ts_ss = sc.TS_SS()
 ```
 
