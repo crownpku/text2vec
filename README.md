@@ -1,6 +1,8 @@
 # Text2Vec 
 ### Easily generate document/paragraph/sentence vectors and calculate similarity. 
 
+### [中文Blog](http://www.crownpku.com/2018/03/30/Text2Vec-%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%87%E6%9C%AC%E5%90%91%E9%87%8F%E5%8C%96%E5%B7%A5%E5%85%B7.html)
+
 Goal of this repository is to build a tool to easily generate document/paragraph/sentence vectors for similarity calculation and as input for further machine learning models.
 
 ## Requirements
