@@ -1,10 +1,10 @@
 import spacy
-import pandas as pd
 from gensim.corpora import Dictionary
 from gensim.models.tfidfmodel import TfidfModel
 from gensim import corpora, models, similarities
 from gensim.matutils import sparse2full
 import numpy as np
+import math
 
 
 
@@ -145,11 +145,11 @@ class simical():
         return math.sqrt(sum(math.pow((v1-v2),2) for v1,v2 in zip(self.vec1, self.vec2)))
     
     def Cosine(self) :
-        result = self._InnerProduct(self.vec1,self.vec2) / (self._VectorSize(self.vec1) * self._VectorSize(self.vec2))
+        result = self._InnerProduct() / (self._VectorSize(self.vec1) * self._VectorSize(self.vec2))
         return result
 
     def Triangle(self) :
-        theta = math.radians(self.Theta())
+        theta = math.radians(self._Theta())
         return (self._VectorSize(self.vec1) * self._VectorSize(self.vec2) * math.sin(theta)) / 2
 
     def Sector(self) :

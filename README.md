@@ -1,8 +1,12 @@
 # Text2Vec 
 ### Easily generate document/paragraph/sentence vectors and calculate similarity. 
 
-
 Goal of this repository is to build a tool to easily generate document/paragraph/sentence vectors for similarity calculation and as input for further machine learning models.
+
+## Requirements
+* spacy
+* gensim
+* numpy
 
 ## Usage of Text to Vector (text2vec)
 
@@ -58,8 +62,14 @@ docs_emb = t2v.tfidf_weighted_wv()
 
 ## Usage of Similarity Calculation (simical)
 
-For example, we want to calculate the similarity between the first two sentences in the docs_emb we just computed.
+For example, we want to calculate the similarity/distance between the first two sentences in the docs_emb we just computed.
+
+Note that cosine similarity is between 0-1 (1 is most similar while 0 is least similar).
+For the other similarity measurements the results are actually **distance** (the larget the less similar). It's better to calculate distance for all possible pairs and then rank.
+
+* Initialize
 ```
+import text2vec
 sc = text2vec.simical(docs_emb[0], docs_emb[1])
 ```
 
@@ -92,13 +102,7 @@ simi_ts_ss = sc.TS_SS()
 
 https://radimrehurek.com/gensim/tut2.html
 
-https://github.com/jhlau/doc2vec
-
-https://github.com/RaRe-Technologies/gensim/blob/develop/docs/notebooks/
-
 https://github.com/sdimi/average-word2vec
-
-https://github.com/bnjmacdonald/text2vec
 
 https://github.com/taki0112/Vector_Similarity
 
