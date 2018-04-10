@@ -41,7 +41,7 @@ def _get_tfidf(self, docs, docs_dict):
 docs_tfidf   = self._get_tfidf(self.docs, self.docs_dict)
 ```
 
-*Now `docs_tfidf` is a matrix of shape 1000x3380. Each row is the TF-IDF vector with length 3380, with each column the TF-IDF weight for the corresponding weight for a unique word.*
+**Now `docs_tfidf` is a matrix of shape 1000x3380. Each row is the TF-IDF vector with length 3380, with each column the TF-IDF weight for the corresponding weight for a unique word.**
 
 ### Get Word Embeddings for words in vocabulary
 
@@ -54,7 +54,7 @@ Remember that for our current case, we have a vocabulary of size 3380. For each 
 tfidf_emb_vecs = np.vstack([self.nlp(self.docs_dict[i]).vector for i in range(len(self.docs_dict))])
 ```
 
-*Now we get the `tfidf_emb_vecs` which is a matrix of shapre 3380x384. Each row is a word in the vocabulary with its 384 dimension of pre-trained word vector.*
+**Now we get the `tfidf_emb_vecs` which is a matrix of shapre 3380x384. Each row is a word in the vocabulary with its 384 dimension of pre-trained word vector.**
 
 ### Get Weighted Word Vector w.r.t TF-IDF
 
@@ -64,22 +64,22 @@ We have the `docs_tfidf` with shape 1000x3380, and `tfidf_emb_vecs` with shape 3
 docs_emb = np.dot(docs_tfidf, tfidf_emb_vecs)
 ```
 
-Now we get 'docs_emb' which is a matrix of size 1000x384. Each row is a document, with its *Weighted Word Vector w.r.t TF-IDF* of dimension 384.
+Now we get 'docs_emb' which is a matrix of size 1000x384. Each row is a document, with its **Weighted Word Vector w.r.t TF-IDF** of dimension 384.
 
 
 
 To wrap-up, here is the part of code in text2vec.py:
 ```
 def tfidf_weighted_wv(self):
-        #tf-idf
-        docs_vecs   = self._get_tfidf(self.docs, self.docs_dict)
+    #tf-idf
+    docs_vecs   = self._get_tfidf(self.docs, self.docs_dict)
+    
+    #Load glove embedding vector for each TF-IDF term
+    tfidf_emb_vecs = np.vstack([self.nlp(self.docs_dict[i]).vector for i in range(len(self.docs_dict))])
+    
+    #To get a TF-IDF weighted Glove vector summary of each document, 
+    #we just need to matrix multiply docs_vecs with tfidf_emb_vecs
+    docs_emb = np.dot(docs_vecs, tfidf_emb_vecs)
 
-        #Load glove embedding vector for each TF-IDF term
-        tfidf_emb_vecs = np.vstack([self.nlp(self.docs_dict[i]).vector for i in range(len(self.docs_dict))])
-
-        #To get a TF-IDF weighted Glove vector summary of each document, 
-        #we just need to matrix multiply docs_vecs with tfidf_emb_vecs
-        docs_emb = np.dot(docs_vecs, tfidf_emb_vecs)
-
-        return docs_emb
+    return docs_emb
 ```
