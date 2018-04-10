@@ -49,6 +49,9 @@ docs_avgw2v = t2v.avg_wv()
 docs_emb = t2v.tfidf_weighted_wv()
 ```
 
+For a more detailed introduction of using Weighted Word Embeddings wrt. TFIDF, please read [here](https://github.com/crownpku/text2vec/blob/master/wv_wrt_tfidf.md).
+
+
 ## Usage of Similarity Calculation (simical)
 
 For example, we want to calculate the similarity/distance between the first two sentences in the docs_emb we just computed.
