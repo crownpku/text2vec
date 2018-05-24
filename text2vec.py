@@ -27,6 +27,7 @@ class text2vec():
     #Gensim to create a dictionary and filter out stop and infrequent words (lemmas).
     def _get_docs_dict(self, docs):
         docs_dict = Dictionary(docs)
+        #CAREFUL: For small corpus please carefully modify the parameters for filter_extremes, or simply comment it out.
         docs_dict.filter_extremes(no_below=5, no_above=0.2)
         docs_dict.compactify()
         return docs_dict
