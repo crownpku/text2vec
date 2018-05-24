@@ -6,7 +6,7 @@
 Goal of this repository is to build a tool to easily generate document/paragraph/sentence vectors for similarity calculation and as input for further machine learning models.
 
 ## Requirements
-* spacy
+* spacy2.0 (with English model downloaded and installed)
 * gensim
 * numpy
 
