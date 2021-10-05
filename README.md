@@ -19,10 +19,10 @@ import text2vec
 
 * input: List of Documents, doc_list is a list of documents/paragraphs/sentences.
 ```
-t2v = text2vec.text2vec(doc_list)
+t2v = text2vec.Text2Vec(doc_list)
 ```
 
-* output: List of Vectors of dimention N
+* output: List of Vectors of dimension N
 
 We do such transformation by the following ways. 
 
@@ -52,32 +52,32 @@ docs_emb = t2v.tfidf_weighted_wv()
 For a more detailed introduction of using Weighted Word Embeddings wrt. TFIDF, please read [here](https://github.com/crownpku/text2vec/blob/master/wv_wrt_tfidf.md).
 
 
-## Usage of Similarity Calculation (simical)
+## Usage of Similarity Calculation (SimiCal)
 
 For example, we want to calculate the similarity/distance between the first two sentences in the docs_emb we just computed.
 
 Note that cosine similarity is between 0-1 (1 is most similar while 0 is least similar).
-For the other similarity measurements the results are actually **distance** (the larget the less similar). It's better to calculate distance for all possible pairs and then rank.
+For the other similarity measurements the results are actually **distance** (the largest the less similar). It's better to calculate distance for all possible pairs and then rank.
 
 ```
 # Initialize
 import text2vec
-sc = text2vec.simical(docs_emb[0], docs_emb[1])
+sc = text2vec.SimiCal(docs_emb[0], docs_emb[1])
 
 # Use Cosine
-simi_cos = sc.Cosine()
+simi_cos = sc.cosine()
 
 # Use Euclidean
-simi_euc = sc.Euclidean()
+simi_euc = sc.euclidean()
 
 # Use Triangle's Area Similarity (TS)
-simi_ts = sc.Triangle()
+simi_ts = sc.triangle()
 
 # Use Sector's Area Similairity (SS)
-simi_ss = sc.Sector()
+simi_ss = sc.sector()
 
 # Use TS-SS
-simi_ts_ss = sc.TS_SS()
+simi_ts_ss = sc.ts_ss()
 ```
 
 ## Reference
@@ -87,6 +87,3 @@ https://radimrehurek.com/gensim/tut2.html
 https://github.com/sdimi/average-word2vec
 
 https://github.com/taki0112/Vector_Similarity
-
-
-

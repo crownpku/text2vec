@@ -72,7 +72,7 @@ To wrap-up, here is the part of code in text2vec.py:
 ```
 def tfidf_weighted_wv(self):
     #tf-idf
-    docs_vecs   = self._get_tfidf(self.docs, self.docs_dict)
+    docs_vecs   = self._get_tfidf()
     
     #Load glove embedding vector for each TF-IDF term
     tfidf_emb_vecs = np.vstack([self.nlp(self.docs_dict[i]).vector for i in range(len(self.docs_dict))])
